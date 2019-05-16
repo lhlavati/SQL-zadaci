@@ -16,7 +16,7 @@ CREATE TABLE vozac(
 	ime VARCHAR(50) NOT NULL,
 	prezime VARCHAR(50),
 	OIB CHAR(11),
-	spol CHAR(1) DEFAULT 'M' CHECK(spol IN('M','Z','U'))
+	spol CHAR(1) DEFAULT 'M' CHECK(spol IN('M','Z','T'))
 );
 
 CREATE TABLE putnik(
