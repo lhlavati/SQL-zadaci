@@ -50,6 +50,8 @@ ALTER TABLE vozi ADD FOREIGN KEY (vozilo) REFERENCES vozilo(sifra);
 ALTER TABLE putnik ADD FOREIGN KEY (vozac) REFERENCES vozac(sifra);
 ALTER TABLE voznja ADD FOREIGN KEY (putnik) REFERENCES putnik(sifra);
 
+############################################# INSERT ##########################################
+
 # VOZILA 
 
 INSERT INTO vozilo (sifra, marka, gorivo, snaga, ABS_, godiste, brojVozila)
@@ -118,8 +120,43 @@ VALUES (2, 'Bosanska 35, Osijek', 'Josipa Kozarca 20, Višnjevac', 2);
 INSERT INTO voznja (sifra, adresaPolazista, adresaOdredista, putnik)
 VALUES (3, 'Vijenac Ivana Meštrovica 135, Osijek', 'J.J. Strossmayer 62, Osijek', 4);
 
+INSERT INTO voznja (sifra, adresaPolazista, adresaOdredista)
+VALUES (4,'Redak za', 'Brisanje');
+
 # VOZILO VOZAC
 
 INSERT INTO vozi(vozilo, vozac)
 VALUES (1,1),(2,2),(3,3),(4,4),(5,5);
 
+##################################### INSERT ####################################
+
+################################# UPDATE I DELETE #################################
+
+UPDATE vozilo SET snaga = '90 KS'
+WHERE snaga = '66 kW';
+
+UPDATE vozac SET OIB = 72322160060
+WHERE sifra = 1;
+
+UPDATE vozac SET OIB = 75151938406
+WHERE sifra = 2;
+
+UPDATE vozac SET OIB = 06576565655
+WHERE sifra = 3;
+
+UPDATE vozac SET OIB = 25852669185
+WHERE sifra = 4;
+
+UPDATE vozac SET OIB = 09366221636
+WHERE sifra = 5;
+
+UPDATE putnik SET ime = 'Ivana',prezime = 'Sigurnjak'
+WHERE sifra = 7;
+
+UPDATE voznja SET putnik = 5
+WHERE sifra = 1;
+
+DELETE FROM voznja
+WHERE sifra = 4;
+
+################################# UPDATE I DELETE #################################
