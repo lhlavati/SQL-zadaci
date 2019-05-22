@@ -1,3 +1,7 @@
+# izvođenje
+# Ova datoteka se nalazi na d:\
+# d:\xampp\mysql\bin\mysql -uedunova -pedunova --default_character_set=utf8 < "D:\SQL\taxisluzba.sql"
+
 drop database if exists taxisluzba;
 create database taxisluzba;
 use taxisluzba;
@@ -5,9 +9,10 @@ use taxisluzba;
 CREATE TABLE vozilo(
 	sifra INT PRIMARY KEY NOT NULL,
 	marka VARCHAR(50),
-	gorivo VARCHAR(6) DEFAULT 'dizel' CHECK(gorivo IN('dizel','benzin','struja')),
-	snaga INT,
+	gorivo VARCHAR(6) DEFAULT 'diesel' CHECK(gorivo IN('diesel','benzin','struja')),
+	snaga VARCHAR(8),
 	ABS_ boolean,
+	godiste CHAR(4),
 	brojVozila INT NOT NULL
 );
 
@@ -44,3 +49,18 @@ ALTER TABLE vozilo_vozac ADD FOREIGN KEY (vozac) REFERENCES vozac(sifra);
 ALTER TABLE vozilo_vozac ADD FOREIGN KEY (vozilo) REFERENCES vozilo(sifra);
 ALTER TABLE putnik ADD FOREIGN KEY (vozac) REFERENCES vozac(sifra);
 ALTER TABLE voznja ADD FOREIGN KEY (putnik) REFERENCES putnik(sifra);
+
+INSERT INTO vozilo (sifra, marka, gorivo, snaga, ABS_, godiste, brojVozila)
+VALUES (1, 'Škoda', 'diesel', '77 kW', true, 2013, 1);
+
+INSERT INTO vozilo (sifra, marka, gorivo, snaga, ABS_, godiste, brojVozila)
+VALUES (2, 'Dacia', 'benzin', '66 kW', true, 2016, 2);
+
+INSERT INTO vozilo (sifra, marka, gorivo, snaga, ABS_, godiste, brojVozila)
+VALUES (3, 'Citroën', 'diesel', '66 kW', true, 2007, 3);
+
+INSERT INTO vozilo (sifra, marka, gorivo, snaga, ABS_, godiste, brojVozila)
+VALUES (4, 'Seat', 'diesel', '47 kW', false, 2003, 4);
+
+INSERT INTO vozilo (sifra, marka, gorivo, snaga, ABS_, godiste, brojVozila)
+VALUES (5, 'VW', 'struja', '100 kW', true, 2018, 5);
