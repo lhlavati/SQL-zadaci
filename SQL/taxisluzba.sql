@@ -81,22 +81,22 @@ INSERT INTO vozac (sifra, ime, prezime, OIB, spol)
 VALUES (5, 'Josipa', 'Josic', 12345678983, 'Ž');
 
 INSERT INTO putnik (sifra, ime, prezime, brojMob, vozac)
-VALUES (1, 'Filip', 'Batori', +385991234567, 1);
+VALUES (1, 'Filip', 'Batori', '+385991234567', 1);
 
 INSERT INTO putnik (sifra, ime, prezime, brojMob, vozac)
-VALUES (2, 'Alen', 'Klun', +385991234566, 5);
+VALUES (2, 'Alen', 'Klun', '+385991234566', 5);
 
 INSERT INTO putnik (sifra, ime, prezime, brojMob, vozac)
-VALUES (3, 'Filip', 'Hulak', +385991234565, 3);
+VALUES (3, 'Filip', 'Hulak', '+385991234565', 3);
 
 INSERT INTO putnik (sifra, ime, prezime, brojMob, vozac)
-VALUES (4, 'Tomica', 'Miletic', +385991234564, 2);
+VALUES (4, 'Tomica', 'Miletic', '+385991234564', 2);
 
 INSERT INTO putnik (sifra, ime, prezime, brojMob, vozac)
-VALUES (5, 'Nikola', 'Tokic', +385991234563, 4);
+VALUES (5, 'Nikola', 'Tokic', '+385991234563', 4);
 
 INSERT INTO putnik (sifra, ime, prezime, brojMob, vozac)
-VALUES (6, 'Marija', 'Miletic', +385991234562, 5);
+VALUES (6, 'Marija', 'Miletic', '+385991234562', 5);
 
 INSERT INTO putnik (sifra, ime, prezime, brojMob, vozac)
-VALUES (7, 'Željka', 'Antunovic', +385991234561, 4);
+VALUES (7, 'Željka', 'Antunovic', '+385991234561', 4);
