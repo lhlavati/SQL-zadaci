@@ -64,3 +64,18 @@ VALUES (4, 'Seat', 'diesel', '47 kW', false, 2003, 4);
 
 INSERT INTO vozilo (sifra, marka, gorivo, snaga, ABS_, godiste, brojVozila)
 VALUES (5, 'VW', 'struja', '100 kW', true, 2018, 5);
+
+INSERT INTO vozac (sifra, ime, prezime, OIB, spol)
+VALUES (1, 'Bruna', 'Antunovic', 12345678987, 'Ž');
+
+INSERT INTO vozac (sifra, ime, prezime, OIB, spol)
+VALUES (2, 'Joško', 'Miletic', 12345678986, default);
+
+INSERT INTO vozac (sifra, ime, prezime, OIB, spol)
+VALUES (3, 'Luka', 'Hulak', 12345678985, default);
+
+INSERT INTO vozac (sifra, ime, prezime, OIB, spol)
+VALUES (4, 'Luka', 'Hlavati', 12345678984, default);
+
+INSERT INTO vozac (sifra, ime, prezime, OIB, spol)
+VALUES (5, 'Josipa', 'Josic', 12345678983, 'Ž');
