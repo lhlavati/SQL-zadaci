@@ -8,7 +8,8 @@ CREATE TABLE tim(
 	sifra INT PRIMARY KEY NOT NULL,
 	ime VARCHAR(100) NOT NULL,
 	grad VARCHAR(50),
-	trener VARCHAR(50)
+	trener VARCHAR(50),
+	kapetan INT
 );
 
 CREATE TABLE igrac(
@@ -17,8 +18,7 @@ CREATE TABLE igrac(
 	prezime VARCHAR(50) NOT NULL,
 	pozicija CHAR(2) NOT NULL,
 	brojDresa INT NOT NULL,
-	tim INT,
-	kapetan INT
+	tim INT
 );
 
 CREATE TABLE utakmica(
@@ -37,7 +37,13 @@ CREATE TABLE ozljeda(
 	igrac INT
 );
 
-ALTER TABLE igrac ADD FOREIGN KEY (kapetan) REFERENCES igrac(sifra);
+CREATE TABLE kapetan(
+	sifra INT PRIMARY KEY NOT NULL,
+	igrac INT
+);
+
+ALTER TABLE kapetan ADD FOREIGN KEY (igrac) REFERENCES igrac(sifra);
+ALTER TABLE tim ADD FOREIGN KEY (kapetan) REFERENCES kapetan(sifra);
 ALTER TABLE igrac ADD FOREIGN KEY (tim) REFERENCES tim(sifra);
 ALTER TABLE utakmica ADD FOREIGN KEY (domacin) REFERENCES tim(sifra);
 ALTER TABLE utakmica ADD FOREIGN KEY (gost) REFERENCES tim(sifra);
