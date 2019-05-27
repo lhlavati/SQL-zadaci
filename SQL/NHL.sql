@@ -37,13 +37,7 @@ CREATE TABLE ozljeda(
 	igrac INT
 );
 
-CREATE TABLE kapetan(
-	sifra INT PRIMARY KEY NOT NULL,
-	igrac INT
-);
-
-ALTER TABLE kapetan ADD FOREIGN KEY (igrac) REFERENCES igrac(sifra);
-ALTER TABLE tim ADD FOREIGN KEY (kapetan) REFERENCES kapetan(sifra);
+ALTER TABLE tim ADD FOREIGN KEY (kapetan) REFERENCES igrac(sifra);
 ALTER TABLE igrac ADD FOREIGN KEY (tim) REFERENCES tim(sifra);
 ALTER TABLE utakmica ADD FOREIGN KEY (domacin) REFERENCES tim(sifra);
 ALTER TABLE utakmica ADD FOREIGN KEY (gost) REFERENCES tim(sifra);
