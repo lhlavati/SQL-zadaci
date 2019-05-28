@@ -1,3 +1,4 @@
+# d:\xampp\mysql\bin\mysql -uedunova -pedunova --default_character_set=utf8 < "D:\GitHub\SQL\mjesta.sql"
 drop database if exists mjesta;
 create database mjesta character set utf8;
 use mjesta;
