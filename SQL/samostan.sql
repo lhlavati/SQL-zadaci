@@ -48,4 +48,28 @@ INSERT INTO obavlja
 VALUES (1, 3);
 
 INSERT INTO obavlja
-VALUES (2, 1);
+VALUES (2, 2);
+
+INSERT INTO obavlja
+VALUES (3, 2);
+
+UPDATE svecenik SET nadredeni = 2
+WHERE ime LIKE 'T%';
+
+UPDATE svecenik SET ime = 'Ivica'
+WHERE ime LIKE '%on%';
+
+# Ispiši sve svećenike koji ne slažu knjige
+
+# SELECT svecenik FROM obavlja
+# WHERE NOT (posao = 3);
+
+# Ispiši sve svećenike koji pripremaju svetu misu
+
+# SELECT svecnik FROM obavlja
+# WHERE posao = 2;
+
+# Ispiši sve svećenike kojima imena počinju sa slovom 'I'
+
+# SELECT * FROM svecenik
+# WHERE ime LIKE 'I%';
