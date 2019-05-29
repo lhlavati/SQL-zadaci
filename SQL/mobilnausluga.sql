@@ -53,13 +53,32 @@ INSERT INTO uredaj(imei, marka)
 VALUES(5, 'Samsung');
 
 INSERT INTO korisnik (sifra, OIB, ime, prezime, broj_tel, operater, uredaj)
-VALUES (1, 43706733560, 'Luka', 'Hlavati', '+385-915-555-871', 91, 1);
+VALUES (1, 43706733560, 'Luka', 'Hlavati', '5-555-871', 91, 1);
 
 INSERT INTO korisnik (sifra, OIB, ime, prezime, broj_tel, operater, uredaj)
-VALUES (2, 123456789101, 'Ivan', 'Iviæ', '+385-985-553-694', 98, 2);
+VALUES (2, 123456789101, 'Ivan', 'Ivic', '5-553-694', 98, 2);
 
 INSERT INTO korisnik (sifra, OIB, ime, prezime, broj_tel, operater, uredaj)
-VALUES (3, 77442219023, 'Marko', 'Markiæ', '+385-915-550-794', 91, 3);
+VALUES (3, 77442219023, 'Marko', 'Markic', '5-550-794', 91, 3);
 
 INSERT INTO korisnik (sifra, OIB, ime, prezime, broj_tel, operater, uredaj)
-VALUES (4, 25178954355, 'Matej', 'Matiæ', '+385-955-556-050', 95, 4);
+VALUES (4, 25178954355, 'Matej', 'Matic', '5-556-050', 95, 4);
+
+SELECT concat(K.ime,' ', K.prezime) AS korisnik, concat ('+385-',O.predbroj,K.broj_tel) AS broj_tel, O.naziv, U.marka, U.model
+FROM operater AS O, korisnik AS K, uredaj AS U
+WHERE O.predbroj = K.operater AND U.imei = K.uredaj AND U.marka = 'Samsung';
+
+SELECT concat (a.ime,' ', a.prezime) AS korisnik, concat ('+385-',b.predbroj,a.broj_tel) AS broj_tel, b.naziv, c.marka, c.model
+FROM korisnik a INNER JOIN operater b ON a.operater = b.predbroj
+INNER JOIN uredaj c ON a.uredaj = c.imei
+WHERE c.marka = 'Samsung';
+
+
+
+
+
+
+
+
+
+
