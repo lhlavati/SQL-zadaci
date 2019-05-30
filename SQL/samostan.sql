@@ -59,17 +59,24 @@ WHERE ime LIKE 'T%';
 UPDATE svecenik SET ime = 'Ivica'
 WHERE ime LIKE '%on%';
 
-# Ispiši sve svećenike koji ne slažu knjige
+#Ispiši sve svećenike koji ne slažu knjige
 
-# SELECT svecenik FROM obavlja
-# WHERE NOT (posao = 3);
+SELECT svecenik FROM obavlja
+WHERE NOT (posao = 3);
 
-# Ispiši sve svećenike koji pripremaju svetu misu
+#Ispiši sve svećenike koji pripremaju svetu misu
 
-# SELECT svecnik FROM obavlja
-# WHERE posao = 2;
+SELECT svecnik FROM obavlja
+WHERE posao = 2;
 
-# Ispiši sve svećenike kojima imena počinju sa slovom 'I'
+#Ispiši sve svećenike kojima imena počinju sa slovom 'I'
 
-# SELECT * FROM svecenik
-# WHERE ime LIKE 'I%';
+SELECT * FROM svecenik
+WHERE ime LIKE 'I%';
+
+#Ispiši imena svećenika kojima imena počinju na slovo 'I' te njihove poslove
+
+SELECT b.ime, c.naziv
+FROM obavlja a INNER JOIN svecenik b ON a.svecenik = b.sifra
+INNER JOIN posao c ON c.sifra = a.posao
+WHERE ime LIKE 'I%';
