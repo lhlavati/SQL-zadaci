@@ -43,14 +43,14 @@ ALTER TABLE utakmica ADD FOREIGN KEY (domacin) REFERENCES tim(sifra);
 ALTER TABLE utakmica ADD FOREIGN KEY (gost) REFERENCES tim(sifra);
 ALTER TABLE ozljeda ADD FOREIGN KEY (igrac) REFERENCES igrac(sifra);
 
-INSERT INTO tim (sifra, ime, trener, kapetan)
-VALUES (1, 'New York Rangers', 'David Quinn', 11);
+INSERT INTO tim (sifra, ime, trener)
+VALUES (1, 'New York Rangers', 'David Quinn');
 
-INSERT INTO tim (sifra, ime, trener, kapetan)
-VALUES (2, 'Vegas Golden Knights', 'Gerard Gallant', 22);
+INSERT INTO tim (sifra, ime, trener)
+VALUES (2, 'Vegas Golden Knights', 'Gerard Gallant');
 
-INSERT INTO tim (sifra, ime, trener, kapetan)
-VALUES (3, 'Boston Bruins', 'Bruce Cassidy', 33);
+INSERT INTO tim (sifra, ime, trener)
+VALUES (3, 'Boston Bruins', 'Bruce Cassidy');
 
 # New York Rangers
 INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
@@ -110,12 +110,34 @@ VALUES (35, 'Chara', 'L', 33, 3);
 
 INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
 VALUES (36, 'Halak', 'GK', 29, 3);
-SELECT * utakmica;
+
 INSERT INTO utakmica (sifra, datumUtakmice, domacin, gost)
 VALUES (1, default, 1, 2);
 
 INSERT INTO utakmica (sifra, datumUtakmice, domacin, gost)
-VALUES (2, '2019-05-28', 2, 1);
+VALUES (2, '2019-05-28', 2, 3);
+
+INSERT INTO utakmica (sifra, datumUtakmice, domacin, gost)
+VALUES (3, '2019-06-15', 3, 1);
 
 INSERT INTO ozljeda (sifra, opisOzljede, igrac)
 VALUES (1, 'Uganuce gleznja', 11);
+
+INSERT INTO ozljeda (sifra, opisOzljede, igrac)
+VALUES (2, 'Napuknuce kosti', 23);
+
+INSERT INTO ozljeda (sifra, opisOzljede, igrac)
+VALUES (3, 'Iscasenje zgloba', 13);
+
+INSERT INTO ozljeda (sifra, opisOzljede, igrac)
+VALUES (4, 'Otekla noga', 35);
+
+# Ispisati sva prezimena igraèa koji su ozljeðeni
+SELECT b.prezime AS Igrac, a.opisOzljede AS Ozljeda
+FROM ozljeda a INNER JOIN igrac b ON a.igrac = b.sifra;
+
+# Ispisati sva prezimena igraèa, broj dresa i imena timova kojima pripadaju igraèi
+# poredani od najmanjeg prema najveæem broju dresa
+SELECT a.prezime AS Igrac, concat('#',a.brojDresa) AS brojDresa, b.ime AS Tim
+FROM igrac a INNER JOIN tim b ON b.sifra = a.tim
+ORDER BY a.brojDresa ASC;
