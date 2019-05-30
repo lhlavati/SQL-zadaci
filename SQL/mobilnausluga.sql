@@ -72,13 +72,3 @@ SELECT concat (a.ime,' ', a.prezime) AS korisnik, concat ('+385-',b.predbroj,a.b
 FROM korisnik a INNER JOIN operater b ON a.operater = b.predbroj
 INNER JOIN uredaj c ON a.uredaj = c.imei
 WHERE c.marka = 'Samsung';
-
-
-
-
-
-
-
-
-
-

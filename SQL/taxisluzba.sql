@@ -55,13 +55,13 @@ ALTER TABLE voznja ADD FOREIGN KEY (putnik) REFERENCES putnik(sifra);
 # VOZILA 
 
 INSERT INTO vozilo (sifra, marka, gorivo, snaga, ABS_, godiste, brojVozila)
-VALUES (1, 'Škoda', default, '77 kW', true, 2013, 1);
+VALUES (1, 'Skoda', default, '77 kW', true, 2013, 1);
 
 INSERT INTO vozilo (sifra, marka, gorivo, snaga, ABS_, godiste, brojVozila)
 VALUES (2, 'Dacia', 'benzin', '66 kW', true, 2016, 2);
 
 INSERT INTO vozilo (sifra, marka, gorivo, snaga, ABS_, godiste, brojVozila)
-VALUES (3, 'Citroën', 'diesel', '66 kW', true, 2007, 3);
+VALUES (3, 'Citroen', 'diesel', '66 kW', true, 2007, 3);
 
 INSERT INTO vozilo (sifra, marka, gorivo, snaga, ABS_, godiste, brojVozila)
 VALUES (4, 'Seat', default, '47 kW', false, 2003, 4);
@@ -72,10 +72,10 @@ VALUES (5, 'Audi', 'diesel', '100 kW', true, 2018, 5);
 # VOZACI
 
 INSERT INTO vozac (sifra, ime, prezime, OIB, spol)
-VALUES (1, 'Bruna', 'Antunovic', 12345678987, 'Ž');
+VALUES (1, 'Bruna', 'Antunovic', 12345678987, 'Z');
 
 INSERT INTO vozac (sifra, ime, prezime, OIB, spol)
-VALUES (2, 'Joško', 'Miletic', 12345678986, default);
+VALUES (2, 'Josko', 'Miletic', 12345678986, default);
 
 INSERT INTO vozac (sifra, ime, prezime, OIB, spol)
 VALUES (3, 'Luka', 'Hulak', 12345678985, default);
@@ -84,7 +84,7 @@ INSERT INTO vozac (sifra, ime, prezime, OIB, spol)
 VALUES (4, 'Luka', 'Hlavati', 12345678984, default);
 
 INSERT INTO vozac (sifra, ime, prezime, OIB, spol)
-VALUES (5, 'Josipa', 'Josic', 12345678983, 'Ž');
+VALUES (5, 'Josipa', 'Josic', 12345678983, 'Z');
 
 # PUTNICI
 
@@ -128,10 +128,6 @@ VALUES (4,'Redak za', 'Brisanje');
 INSERT INTO vozi(vozilo, vozac)
 VALUES (1,1),(2,2),(3,3),(4,4),(5,5);
 
-##################################### INSERT ####################################
-
-################################# UPDATE I DELETE #################################
-
 UPDATE vozilo SET snaga = '90 KS'
 WHERE snaga = '66 kW';
 
@@ -159,4 +155,10 @@ WHERE sifra = 1;
 DELETE FROM voznja
 WHERE sifra = 4;
 
-################################# UPDATE I DELETE #################################
+# Ispis adresa odredista i polazista te broj vozila i vozaca
+SELECT * FROM voznja;
+SELECT e.adresaOdredista, e.adresaPolazista, a.brojVozila AS Broj_vozila, c.ime AS Vozac 
+FROM vozilo a LEFT JOIN vozi b ON a.sifra = b.vozilo
+INNER JOIN vozac c ON b.vozac = c.sifra
+INNER JOIN putnik d ON c.sifra = d.vozac
+INNER JOIN voznja e ON e.putnik = d.sifra
