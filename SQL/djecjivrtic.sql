@@ -42,7 +42,7 @@ INSERT INTO odgajateljica (sifra, ime, prezime)
 VALUES (1, "Ivana", "Sigurnjak");
 
 INSERT INTO odgajateljica (sifra, ime, prezime)
-VALUES (2, "Miss", "Fortune");
+VALUES (2, "Ines", "Škrnjug");
 
 INSERT INTO djeca
 VALUES (1, "Luka", "Hlavati", 2, 1);
@@ -62,8 +62,23 @@ WHERE sifra = 4;
 UPDATE odgojnaskupina SET naziv = "Breskva"
 WHERE naziv = "Jež";
 
-UPDATE odgajateljica SET ime = "Ivana", prezime = "Ivić"
+UPDATE odgajateljica SET ime = "Ivana", prezime = "Ivic"
 WHERE sifra = 1;
 
 UPDATE djeca SET ime = "Lux"
 WHERE ime = "Luka";
+
+SELECT * FROM djeca;
+
+# Ispiši svu djecu, nazive njihovih skupina i imena odgajateljica
+
+SELECT concat(a.ime,' ', a.prezime) AS Dijete, concat(b.ime,' ', b.prezime) AS Odgajateljica, c.naziv AS Skupina
+FROM djeca a INNER JOIN odgajateljica b ON a.odgajateljica = b.sifra
+INNER JOIN odgojnaskupina c ON a.odgojnaskupina = c.sifra;
+
+# Ispiši ime i prezime djece i naziv skupine kojima je odgajateljica 'Ines Škrnjug'
+
+SELECT concat(a.ime,' ', a.prezime) AS Dijete, c.naziv
+FROM djeca a INNER JOIN odgajateljica b ON a.odgajateljica = b.sifra
+INNER JOIN odgojnaskupina c ON a.odgojnaskupina = c.sifra
+WHERE b.ime = 'Ines' AND b.prezime = 'Škrnjug';
