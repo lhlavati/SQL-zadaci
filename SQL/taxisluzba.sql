@@ -34,8 +34,8 @@ CREATE TABLE voznja(
 
 CREATE TABLE vozi(
 	sifra INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	vrijemePocetka DATETIME NOT NULL,
-	vrijemeKraja DATETIME NOT NULL,
+	vrijemePocetka DATETIME DEFAULT NOW() NOT NULL,
+	vrijemeKraja DATETIME DEFAULT NOW() NOT NULL,
 	vozilo INT,
 	vozac INT
 );
@@ -44,82 +44,77 @@ ALTER TABLE vozi ADD FOREIGN KEY (vozac) REFERENCES vozac(sifra);
 ALTER TABLE vozi ADD FOREIGN KEY (vozilo) REFERENCES vozilo(sifra);
 ALTER TABLE voznja ADD FOREIGN KEY (vozi) REFERENCES vozi(sifra);
 ############################################# INSERT ##########################################
-/*
+
 # VOZILA 
 
 INSERT INTO vozilo (sifra, marka, gorivo, snaga, ABS_, godiste, brojVozila)
-VALUES (1, 'Skoda', default, '77 kW', true, 2013, 1);
+VALUES (1, 'Skoda', DEFAULT, '77 kW', TRUE, 2013, 1);
 
 INSERT INTO vozilo (sifra, marka, gorivo, snaga, ABS_, godiste, brojVozila)
-VALUES (2, 'Dacia', 'benzin', '66 kW', true, 2016, 2);
+VALUES (2, 'Dacia', 'benzin', '66 kW', TRUE, 2016, 2);
 
 INSERT INTO vozilo (sifra, marka, gorivo, snaga, ABS_, godiste, brojVozila)
-VALUES (3, 'Citroen', 'diesel', '66 kW', true, 2007, 3);
+VALUES (3, 'Citroen', 'diesel', '66 kW', TRUE, 2007, 3);
 
 INSERT INTO vozilo (sifra, marka, gorivo, snaga, ABS_, godiste, brojVozila)
-VALUES (4, 'Seat', default, '47 kW', false, 2003, 4);
+VALUES (4, 'Seat', DEFAULT, '47 kW', FALSE, 2003, 4);
 
 INSERT INTO vozilo (sifra, marka, gorivo, snaga, ABS_, godiste, brojVozila)
-VALUES (5, 'Audi', 'diesel', '100 kW', true, 2018, 5);
+VALUES (5, 'Audi', 'diesel', '100 kW', TRUE, 2018, 5);
 
 # VOZACI
 
 INSERT INTO vozac (sifra, ime, prezime, OIB, spol)
-VALUES (1, 'Bruna', 'Antunovic', 12345678987, 'Z');
+VALUES (1, 'Bruna', 'Antunovic', 77818759289, 'Z');
 
 INSERT INTO vozac (sifra, ime, prezime, OIB, spol)
-VALUES (2, 'Josko', 'Miletic', 12345678986, default);
+VALUES (2, 'Josko', 'Miletic', 62237004595, DEFAULT);
 
 INSERT INTO vozac (sifra, ime, prezime, OIB, spol)
-VALUES (3, 'Luka', 'Hulak', 12345678985, default);
+VALUES (3, 'Luka', 'Hulak', 41464720097, DEFAULT);
 
 INSERT INTO vozac (sifra, ime, prezime, OIB, spol)
-VALUES (4, 'Luka', 'Hlavati', 12345678984, default);
+VALUES (4, 'Luka', 'Hlavati', 08329612103, DEFAULT);
 
 INSERT INTO vozac (sifra, ime, prezime, OIB, spol)
-VALUES (5, 'Josipa', 'Josic', 12345678983, 'Z');
+VALUES (5, 'Josipa', 'Josic', 28729436831, 'Z');
 
-# PUTNICI
+# VOZI
 
-INSERT INTO putnik (sifra, ime, prezime, brojMob, vozac)
-VALUES (1, 'Filip', 'Batori', '+385991234567', 1);
+INSERT INTO vozi(sifra, vrijemePocetka, vrijemeKraja, vozilo, vozac)
+VALUES (1, DEFAULT, DEFAULT, 1, 1);
 
-INSERT INTO putnik (sifra, ime, prezime, brojMob, vozac)
-VALUES (2, 'Alen', 'Klun', '+385991234566', 5);
+INSERT INTO vozi(sifra, vrijemePocetka, vrijemeKraja, vozilo, vozac)
+VALUES (2, DEFAULT, DEFAULT, 2, 2);
 
-INSERT INTO putnik (sifra, ime, prezime, brojMob, vozac)
-VALUES (3, 'Filip', 'Hulak', '+385991234565', 3);
+INSERT INTO vozi(sifra, vrijemePocetka, vrijemeKraja, vozilo, vozac)
+VALUES (3, DEFAULT, DEFAULT, 3, 3);
 
-INSERT INTO putnik (sifra, ime, prezime, brojMob, vozac)
-VALUES (4, 'Tomica', 'Miletic', '+385991234564', 2);
+INSERT INTO vozi(sifra, vrijemePocetka, vrijemeKraja, vozilo, vozac)
+VALUES (4, DEFAULT, DEFAULT, 4, 4);
 
-INSERT INTO putnik (sifra, ime, prezime, brojMob, vozac)
-VALUES (5, 'Nikola', 'Tokic', '+385991234563', 4);
+INSERT INTO vozi(sifra, vrijemePocetka, vrijemeKraja, vozilo, vozac)
+VALUES (5, DEFAULT, DEFAULT, 5, 5);
 
-INSERT INTO putnik (sifra, ime, prezime, brojMob, vozac)
-VALUES (6, 'Marija', 'Miletic', '+385991234562', 5);
+# VOZNJE
 
-INSERT INTO putnik (sifra, ime, prezime, brojMob, vozac)
-VALUES (7, 'Željka', 'Antunovic', '+385991234561', 4);
+INSERT INTO voznja (sifra, adresaPolazista, adresaOdredista, brojMob, brojPutnika, vozi)
+VALUES (1, 'Vukovarska 90, Osijek', 'Kapucinska 30, Osijek', '+385955551000', 4, 1);
 
-# VOŽNJE
+INSERT INTO voznja (sifra, adresaPolazista, adresaOdredista, brojMob, brojPutnika, vozi)
+VALUES (2, 'Bosanska 35, Osijek', 'Josipa Kozarca 20, Visnjevac','+385975556341', 2, 2);
 
-INSERT INTO voznja (sifra, adresaPolazista, adresaOdredista, putnik)
-VALUES (1, 'Vukovarska 90, Osijek', 'Kapucinska 30, Osijek', 1);
+INSERT INTO voznja (sifra, adresaPolazista, adresaOdredista, brojMob, brojPutnika, vozi)
+VALUES (3, 'Reisnerova 10, Osijek', 'Zupanijska 62, Osijek','+385955557786', 3, 3);
 
-INSERT INTO voznja (sifra, adresaPolazista, adresaOdredista, putnik)
-VALUES (2, 'Bosanska 35, Osijek', 'Josipa Kozarca 20, Višnjevac', 2);
+INSERT INTO voznja (sifra, adresaPolazista, adresaOdredista, brojMob, brojPutnika, vozi)
+VALUES (4, 'Ivana Gundulica 139, Osijek', 'Ruzina 16, Osijek','+385915552830', 1, 4); 
 
-INSERT INTO voznja (sifra, adresaPolazista, adresaOdredista, putnik)
-VALUES (3, 'Vijenac Ivana Meštrovica 135, Osijek', 'J.J. Strossmayer 62, Osijek', 4);
+INSERT INTO voznja (sifra, adresaPolazista, adresaOdredista, brojMob, brojPutnika, vozi)
+VALUES (5, 'Franje Krezme 11, Osijek', 'Vukovarska 5, Osijek','+385925555090', 1, 5);
 
 INSERT INTO voznja (sifra, adresaPolazista, adresaOdredista)
-VALUES (4,'Redak za', 'Brisanje');
-
-# VOZILO VOZAC
-
-INSERT INTO vozi(vozilo, vozac)
-VALUES (1,1),(2,2),(3,3),(4,4),(5,5);
+VALUES (6,'Redak za', 'Brisanje');
 
 UPDATE vozilo SET snaga = '90 KS'
 WHERE snaga = '66 kW';
@@ -139,19 +134,17 @@ WHERE sifra = 4;
 UPDATE vozac SET OIB = 09366221636
 WHERE sifra = 5;
 
-UPDATE putnik SET ime = 'Ivana',prezime = 'Sigurnjak'
-WHERE sifra = 7;
-
-UPDATE voznja SET putnik = 5
-WHERE sifra = 1;
+UPDATE voznja SET brojPutnika = 2
+WHERE sifra = 5;
 
 DELETE FROM voznja
-WHERE sifra = 4;
+WHERE sifra = 6;
 
-# Ispis adresa odredista i polazista te broj vozila i vozaca
+# Ispisi sve iz voznje gdje je broj putnika 2 ili vi�e
 SELECT * FROM voznja;
-SELECT e.adresaOdredista, e.adresaPolazista, a.brojVozila AS Broj_vozila, c.ime AS Vozac 
-FROM vozilo a LEFT JOIN vozi b ON a.sifra = b.vozilo
-INNER JOIN vozac c ON b.vozac = c.sifra
-INNER JOIN putnik d ON c.sifra = d.vozac
-INNER JOIN voznja e ON e.putnik = d.sifra
+
+SELECT a.adresaPolazista, a.adresaOdredista, a.brojMob, a.brojPutnika, concat(c.ime,' ', c.prezime) AS Vozac, d.brojVozila
+FROM voznja a INNER JOIN vozi b ON a.vozi = b.sifra
+INNER JOIN vozac c ON c.sifra = b.vozac
+INNER JOIN vozilo d ON d.sifra = b.vozilo
+WHERE a.brojPutnika > 2;
