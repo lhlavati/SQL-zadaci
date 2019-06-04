@@ -1,5 +1,3 @@
-# izvođenje
-# Ova datoteka se nalazi na d:\
 # d:\xampp\mysql\bin\mysql -uedunova -pedunova --default_character_set=utf8 < "D:\GitHub\SQL\taxisluzba.sql"
 
 drop database if exists taxisluzba;
@@ -7,7 +5,7 @@ create database taxisluzba;
 use taxisluzba;
 
 CREATE TABLE vozilo(
-	sifra INT PRIMARY KEY NOT NULL,
+	sifra INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	marka VARCHAR(50),
 	gorivo VARCHAR(6) DEFAULT 'diesel',
 	snaga VARCHAR(8),
@@ -17,41 +15,36 @@ CREATE TABLE vozilo(
 );
 
 CREATE TABLE vozac(
-	sifra INT PRIMARY KEY NOT NULL,
+	sifra INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	ime VARCHAR(50) NOT NULL,
 	prezime VARCHAR(50),
 	OIB CHAR(11),
 	spol CHAR(1) DEFAULT 'M'
 );
 
-CREATE TABLE putnik(
-	sifra INT PRIMARY KEY NOT NULL,
-	ime VARCHAR(50),
-	prezime VARCHAR(50),
-	brojMob VARCHAR(15) NOT NULL,
-	vozac INT
-);
-
 CREATE TABLE voznja(
-	sifra INT PRIMARY KEY NOT NULL,
+	sifra INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	cijena DECIMAL(18,2),
 	adresaPolazista VARCHAR(50) NOT NULL,
 	adresaOdredista VARCHAR(50) NOT NULL,
-	putnik INT
+	brojMob VARCHAR(15) NOT NULL,
+	brojPutnika INT,
+	vozi INT
 );
 
 CREATE TABLE vozi(
+	sifra INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	vrijemePocetka DATETIME NOT NULL,
+	vrijemeKraja DATETIME NOT NULL,
 	vozilo INT,
 	vozac INT
 );
 
 ALTER TABLE vozi ADD FOREIGN KEY (vozac) REFERENCES vozac(sifra);
 ALTER TABLE vozi ADD FOREIGN KEY (vozilo) REFERENCES vozilo(sifra);
-ALTER TABLE putnik ADD FOREIGN KEY (vozac) REFERENCES vozac(sifra);
-ALTER TABLE voznja ADD FOREIGN KEY (putnik) REFERENCES putnik(sifra);
-
+ALTER TABLE voznja ADD FOREIGN KEY (vozi) REFERENCES vozi(sifra);
 ############################################# INSERT ##########################################
-
+/*
 # VOZILA 
 
 INSERT INTO vozilo (sifra, marka, gorivo, snaga, ABS_, godiste, brojVozila)
