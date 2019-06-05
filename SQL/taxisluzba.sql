@@ -91,24 +91,31 @@ INSERT INTO vozi(sifra, vrijemePocetka, vrijemeKraja, vozilo, vozac)
 VALUES (3, DEFAULT, DEFAULT, 3, 3);
 
 INSERT INTO vozi(sifra, vrijemePocetka, vrijemeKraja, vozilo, vozac)
-VALUES (4, DEFAULT, DEFAULT, 4, 4);
+VALUES (4, '2019-06-05 13:05:16', '2019-06-05 13:15:00', 4, 4);
 
 INSERT INTO vozi(sifra, vrijemePocetka, vrijemeKraja, vozilo, vozac)
 VALUES (5, DEFAULT, DEFAULT, 5, 5);
 
+INSERT INTO vozi(sifra, vrijemePocetka, vrijemeKraja, vozilo, vozac)
+VALUES (6, '2019-06-05 13:36:36', '2019-06-06 13:50:10', 1, 4);
+
+INSERT INTO vozi(sifra, vrijemePocetka, vrijemeKraja, vozilo, vozac)
+VALUES (7, '2019-06-05 14:00:00', '2019-06-05 14:20:23', 3, 4);
+
+
 # VOZNJE
 
 INSERT INTO voznja (sifra, cijena, adresaPolazista, adresaOdredista, brojMob, brojPutnika, vozi)
-VALUES (1, 20, 'Vukovarska 90, Osijek', 'Kapucinska 30, Osijek', '+385955551000', 4, 1);
+VALUES (1, 20, 'Vukovarska 90, Osijek', 'Kapucinska 30, Osijek', '+385955551000', 4, 4);
 
 INSERT INTO voznja (sifra, cijena, adresaPolazista, adresaOdredista, brojMob, brojPutnika, vozi)
-VALUES (2, 35.50, 'Bosanska 35, Osijek', 'Josipa Kozarca 20, Visnjevac','+385975556341', 2, 2);
+VALUES (2, 35.50, 'Bosanska 35, Osijek', 'Josipa Kozarca 20, Visnjevac','+385975556341', 2, 7);
 
 INSERT INTO voznja (sifra, cijena, adresaPolazista, adresaOdredista, brojMob, brojPutnika, vozi)
-VALUES (3, 20, 'Reisnerova 10, Osijek', 'Zupanijska 62, Osijek','+385955557786', 3, 3);
+VALUES (3, 20, 'Reisnerova 10, Osijek', 'Zupanijska 62, Osijek','+385955557786', 3, 4);
 
 INSERT INTO voznja (sifra, cijena, adresaPolazista, adresaOdredista, brojMob, brojPutnika, vozi)
-VALUES (4, 23, 'Ivana Gundulica 139, Osijek', 'Ruzina 16, Osijek','+385915552830', 1, 4); 
+VALUES (4, 23, 'Ivana Gundulica 139, Osijek', 'Ruzina 16, Osijek','+385915552830', 1, 6); 
 
 INSERT INTO voznja (sifra, cijena, adresaPolazista, adresaOdredista, brojMob, brojPutnika, vozi)
 VALUES (5, 20, 'Franje Krezme 11, Osijek', 'Vukovarska 5, Osijek','+385925555090', 1, 5);
@@ -140,18 +147,22 @@ WHERE sifra = 5;
 DELETE FROM voznja
 WHERE sifra = 6;
 
-# Ispisi sve iz voznje gdje je broj putnika 2 ili više
 SELECT * FROM voznja;
+SELECT * FROM vozi;
+SELECT * FROM vozilo;
+SELECT * FROM vozac;
 
-SELECT a.adresaPolazista, a.adresaOdredista, a.brojMob, a.brojPutnika, concat(c.ime,' ', c.prezime) AS Vozac, d.brojVozila
+# Ispisi sve iz voznje gdje je broj putnika 2 ili više
+
+SELECT a.cijena, a.adresaPolazista, a.adresaOdredista, a.brojMob, a.brojPutnika, concat(c.ime,' ', c.prezime) AS Vozac, d.brojVozila
 FROM voznja a INNER JOIN vozi b ON a.vozi = b.sifra
 INNER JOIN vozac c ON c.sifra = b.vozac
 INNER JOIN vozilo d ON d.sifra = b.vozilo
-WHERE a.brojPutnika > 2;¸
+WHERE a.brojPutnika > 2;
 
-# Koliko novaca je zaradio vozaè "Pero Periæ" od 13 do 14 sati 5.6
+# Koliko novaca je zaradio vozaè Luka Hlavati od 13 do 14 sati 5.6.2019
 
 SELECT concat(c.ime,' ',c.prezime) AS Vozac, sum(a.cijena) AS Zarada
 FROM voznja a INNER JOIN vozi b ON b.sifra = a.vozi 
 INNER JOIN vozac c ON c.sifra = b.vozac
-WHERE c.ime = 'Luka' AND c.prezime = 'Hlavati' AND b.vrijemePocetka BETWEEN '2019-06-05 13:00:00' AND '2019-06-05 14:00:00';
+WHERE c.ime = 'Luka' AND c.prezime = 'Hlavati' AND (b.vrijemePocetka BETWEEN '2019-06-05 13:00:00' AND '2019-06-05 13:59:59');
