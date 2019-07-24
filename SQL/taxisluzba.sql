@@ -28,6 +28,8 @@ CREATE TABLE voznja(
 	adresaPolazista VARCHAR(50) NOT NULL,
 	adresaOdredista VARCHAR(50) NOT NULL,
 	brojMob VARCHAR(15) NOT NULL,
+	pocetakVoznje DATETIME DEFAULT NOW() NOT NULL,
+	krajVoznje DATETIME DEFAULT NOW() NOT NULL,
 	brojPutnika INT,
 	vozi INT
 );
@@ -105,20 +107,20 @@ VALUES (7, '2019-06-05 14:00:00', '2019-06-05 14:20:23', 3, 4);
 
 # VOZNJE
 
-INSERT INTO voznja (sifra, cijena, adresaPolazista, adresaOdredista, brojMob, brojPutnika, vozi)
-VALUES (1, 20, 'Vukovarska 90, Osijek', 'Kapucinska 30, Osijek', '+385955551000', 4, 4);
+INSERT INTO voznja (sifra, cijena, adresaPolazista, adresaOdredista, brojMob, pocetakVoznje, krajVoznje, brojPutnika, vozi)
+VALUES (1, 20, 'Vukovarska 90, Osijek', 'Kapucinska 30, Osijek', '+385955551000', DEFAULT, DEFAULT, 4, 4);
 
-INSERT INTO voznja (sifra, cijena, adresaPolazista, adresaOdredista, brojMob, brojPutnika, vozi)
-VALUES (2, 35.50, 'Bosanska 35, Osijek', 'Josipa Kozarca 20, Visnjevac','+385975556341', 2, 7);
+INSERT INTO voznja (sifra, cijena, adresaPolazista, adresaOdredista, brojMob, pocetakVoznje, krajVoznje, brojPutnika, vozi)
+VALUES (2, 35.50, 'Bosanska 35, Osijek', 'Josipa Kozarca 20, Visnjevac','+385975556341', DEFAULT, DEFAULT, 2, 7);
 
-INSERT INTO voznja (sifra, cijena, adresaPolazista, adresaOdredista, brojMob, brojPutnika, vozi)
-VALUES (3, 20, 'Reisnerova 10, Osijek', 'Zupanijska 62, Osijek','+385955557786', 3, 4);
+INSERT INTO voznja (sifra, cijena, adresaPolazista, adresaOdredista, brojMob, pocetakVoznje, krajVoznje, brojPutnika, vozi)
+VALUES (3, 20, 'Reisnerova 10, Osijek', 'Zupanijska 62, Osijek','+385955557786', DEFAULT, DEFAULT, 3, 4);
 
-INSERT INTO voznja (sifra, cijena, adresaPolazista, adresaOdredista, brojMob, brojPutnika, vozi)
-VALUES (4, 23, 'Ivana Gundulica 139, Osijek', 'Ruzina 16, Osijek','+385915552830', 1, 6); 
+INSERT INTO voznja (sifra, cijena, adresaPolazista, adresaOdredista, brojMob, pocetakVoznje, krajVoznje, brojPutnika, vozi)
+VALUES (4, 23, 'Ivana Gundulica 139, Osijek', 'Ruzina 16, Osijek','+385915552830', DEFAULT, DEFAULT, 1, 6); 
 
-INSERT INTO voznja (sifra, cijena, adresaPolazista, adresaOdredista, brojMob, brojPutnika, vozi)
-VALUES (5, 20, 'Franje Krezme 11, Osijek', 'Vukovarska 5, Osijek','+385925555090', 1, 5);
+INSERT INTO voznja (sifra, cijena, adresaPolazista, adresaOdredista, brojMob, pocetakVoznje, krajVoznje, brojPutnika, vozi)
+VALUES (5, 20, 'Franje Krezme 11, Osijek', 'Vukovarska 5, Osijek','+385925555090', DEFAULT, DEFAULT, 1, 5);
 
 INSERT INTO voznja (sifra, adresaPolazista, adresaOdredista)
 VALUES (6,'Redak za', 'Brisanje');
