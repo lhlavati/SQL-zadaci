@@ -155,6 +155,7 @@ SELECT * FROM vozilo;
 SELECT * FROM vozac;
 
 UPDATE vozilo SET godiste = 1975 WHERE sifra = 13;
+UPDATE vozac SET OIB = '49777199631' WHERE sifra = 5;
 # Ispisi sve iz voznje gdje je broj putnika 2 ili više
 
 SELECT a.sifra, a.cijena, a.adresaPolazista, a.adresaOdredista, a.brojMob, a.brojPutnika, concat(c.ime,' ', c.prezime) AS Vozac, d.brojVozila
