@@ -7,7 +7,7 @@ use taxisluzba;
 CREATE TABLE vozilo(
 	sifra INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	marka VARCHAR(50),
-	gorivo VARCHAR(6) DEFAULT 'diesel',
+	gorivo VARCHAR(25) DEFAULT 'diesel',
 	snaga VARCHAR(8),
 	ABS_ boolean,
 	godiste CHAR(4),
@@ -154,9 +154,10 @@ SELECT * FROM vozi;
 SELECT * FROM vozilo;
 SELECT * FROM vozac;
 
+UPDATE vozilo SET godiste = 1975 WHERE sifra = 13;
 # Ispisi sve iz voznje gdje je broj putnika 2 ili više
 
-SELECT a.cijena, a.adresaPolazista, a.adresaOdredista, a.brojMob, a.brojPutnika, concat(c.ime,' ', c.prezime) AS Vozac, d.brojVozila
+SELECT a.sifra, a.cijena, a.adresaPolazista, a.adresaOdredista, a.brojMob, a.brojPutnika, concat(c.ime,' ', c.prezime) AS Vozac, d.brojVozila
 FROM voznja a INNER JOIN vozi b ON a.vozi = b.sifra
 INNER JOIN vozac c ON c.sifra = b.vozac
 INNER JOIN vozilo d ON d.sifra = b.vozilo
@@ -168,3 +169,16 @@ SELECT concat(c.ime,' ',c.prezime) AS Vozac, sum(a.cijena) AS Zarada
 FROM voznja a INNER JOIN vozi b ON b.sifra = a.vozi 
 INNER JOIN vozac c ON c.sifra = b.vozac
 WHERE c.ime = 'Luka' AND c.prezime = 'Hlavati' AND (a.pocetakVoznje BETWEEN '2019-06-05 13:00:00' AND '2019-06-05 13:59:59');
+
+# provjera za javu
+SELECT a.sifra, a.cijena, a.adresaPolazista, a.adresaOdredista, a.brojMob, a.pocetakVoznje, a.krajVoznje, a.brojPutnika, 
+concat(c.ime,' ', c.prezime) AS vozac, concat(d.marka, ', broj vozila ', d.brojVozila) as vozilo
+FROM voznja a INNER JOIN vozi b ON a.vozi = b.sifra
+INNER JOIN vozac c ON c.sifra = b.vozac
+INNER JOIN vozilo d ON d.sifra = b.vozilo;
+
+# provjera za javu 2 (vozi)
+SELECT a.sifra, a.vrijemePocetka, a.vrijemeKraja, concat(b.ime,' ', b.prezime) AS vozac, 
+concat(c.marka, ', broj vozila ', c.brojVozila) as vozilo
+FROM vozi a INNER JOIN vozac b ON b.sifra = a.vozac
+INNER JOIN vozilo c ON c.sifra = a.vozilo;
