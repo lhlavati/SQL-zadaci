@@ -43,94 +43,103 @@ ALTER TABLE utakmica ADD FOREIGN KEY (domacin) REFERENCES tim(sifra);
 ALTER TABLE utakmica ADD FOREIGN KEY (gost) REFERENCES tim(sifra);
 ALTER TABLE ozljeda ADD FOREIGN KEY (igrac) REFERENCES igrac(sifra);
 
-INSERT INTO tim (sifra, ime, trener)
-VALUES (1, 'New York Rangers', 'David Quinn');
+INSERT INTO tim (sifra, ime, grad, trener)
+VALUES (1, 'New York Rangers', 'New York City', 'David Quinn');
 
-INSERT INTO tim (sifra, ime, trener)
-VALUES (2, 'Vegas Golden Knights', 'Gerard Gallant');
+INSERT INTO tim (sifra, ime, grad, trener)
+VALUES (2, 'Vegas Golden Knights', 'Las Vegas', 'Gerard Gallant');
 
-INSERT INTO tim (sifra, ime, trener)
-VALUES (3, 'Boston Bruins', 'Bruce Cassidy');
+INSERT INTO tim (sifra, ime, grad, trener)
+VALUES (3, 'Boston Bruins', 'Boston', 'Bruce Cassidy');
 
 # New York Rangers
-INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
-VALUES (11, 'Andersson', 'C', 50, 1);
+INSERT INTO igrac (sifra, ime, prezime, pozicija, brojDresa, tim)
+VALUES (11, 'Lias', 'Andersson', 'C', 50, 1);
 
-INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
-VALUES (12, 'Brickley', 'LW', 23, 1);
+INSERT INTO igrac (sifra, ime, prezime, pozicija, brojDresa, tim)
+VALUES (12, 'Connor', 'Brickley', 'LW', 23, 1);
 
-INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
-VALUES (13, 'Buchnevich', 'RW', 89, 1);
+INSERT INTO igrac (sifra, ime, prezime, pozicija, brojDresa, tim)
+VALUES (13, 'Pavel', 'Buchnevich', 'RW', 89, 1);
 
-INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
-VALUES (14, 'Claesson', 'L', 33, 1);
+INSERT INTO igrac (sifra, ime, prezime, pozicija, brojDresa, tim)
+VALUES (14, 'Fredrik', 'Claesson', 'L', 33, 1);
 
-INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
-VALUES (15, 'DeAngelo', 'R', 77, 1);
+INSERT INTO igrac (sifra, ime, prezime, pozicija, brojDresa, tim)
+VALUES (15, 'Tony', 'DeAngelo', 'R', 77, 1);
 
-INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
-VALUES (16, 'Georgiev', 'GK', 40, 1);
+INSERT INTO igrac (sifra, ime, prezime, pozicija, brojDresa, tim)
+VALUES (16, 'Alexander', 'Georgiev', 'GK', 40, 1);
 
 # Vegas Golden Knights
 
-INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
-VALUES (21, 'Carpenter', 'C', 40, 2);
+INSERT INTO igrac (sifra, ime, prezime, pozicija, brojDresa, tim)
+VALUES (21, 'Ryan', 'Carpenter', 'C', 40, 2);
 
-INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
-VALUES (22, 'Carrier', 'LW', 28, 2);
+INSERT INTO igrac (sifra, ime, prezime, pozicija, brojDresa, tim)
+VALUES (22, 'William', 'Carrier', 'LW', 28, 2);
 
-INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
-VALUES (23, 'Reaves', 'RW', 75, 2);
+INSERT INTO igrac (sifra, ime, prezime, pozicija, brojDresa, tim)
+VALUES (23, 'Ryan', 'Reaves', 'RW', 75, 2);
 
-INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
-VALUES (24, 'Engelland', 'R', 5, 2);
+INSERT INTO igrac (sifra, ime, prezime, pozicija, brojDresa, tim)
+VALUES (24, 'Deryk', 'Engelland', 'R', 5, 2);
 
-INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
-VALUES (25, 'Holden', 'L', 22, 2);
+INSERT INTO igrac (sifra, ime, prezime, pozicija, brojDresa, tim)
+VALUES (25, 'Nick', 'Holden', 'L', 22, 2);
 
-INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
-VALUES (26, 'Fleury', 'GK', 29, 2);
+INSERT INTO igrac (sifra, ime, prezime, pozicija, brojDresa, tim)
+VALUES (26, 'Marc-Andre', 'Fleury', 'GK', 29, 2);
 
 # Boston Bruins
 
-INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
-VALUES (31, 'Acciari', 'C', 55, 3);
+INSERT INTO igrac (sifra, ime, prezime, pozicija, brojDresa, tim)
+VALUES (31, 'Noel', 'Acciari', 'C', 55, 3);
 
-INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
-VALUES (32, 'Backes', 'RW', 42, 3);
+INSERT INTO igrac (sifra, ime, prezime, pozicija, brojDresa, tim)
+VALUES (32, 'David', 'Backes', 'RW', 42, 3);
 
-INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
-VALUES (33, 'Blidh', 'LW', 81, 3);
+INSERT INTO igrac (sifra, ime, prezime, pozicija, brojDresa, tim)
+VALUES (33, 'Anton', 'Blidh', 'LW', 81, 3);
 
-INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
-VALUES (34, 'Carlo', 'R', 25, 3);
+INSERT INTO igrac (sifra, ime, prezime, pozicija, brojDresa, tim)
+VALUES (34, 'Brandon', 'Carlo', 'R', 25, 3);
 
-INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
-VALUES (35, 'Chara', 'L', 33, 3);
+INSERT INTO igrac (sifra, ime, prezime, pozicija, brojDresa, tim)
+VALUES (35, 'Zdeno', 'Chara', 'L', 33, 3);
 
-INSERT INTO igrac (sifra, prezime, pozicija, brojDresa, tim)
-VALUES (36, 'Halak', 'GK', 29, 3);
+INSERT INTO igrac (sifra, ime, prezime, pozicija, brojDresa, tim)
+VALUES (36, 'Jaroslav', 'Halak', 'GK', 29, 3);
 
-INSERT INTO utakmica (sifra, datumUtakmice, domacin, gost)
-VALUES (1, default, 1, 2);
+INSERT INTO utakmica (sifra, rezultatDomacin, rezultatGost, datumUtakmice, domacin, gost)
+VALUES (1, 2, 4, default, 1, 2);
 
-INSERT INTO utakmica (sifra, datumUtakmice, domacin, gost)
-VALUES (2, '2019-05-28', 2, 3);
+INSERT INTO utakmica (sifra, rezultatDomacin, rezultatGost, datumUtakmice, domacin, gost)
+VALUES (2, 5, 7, '2019-05-28', 2, 3);
 
-INSERT INTO utakmica (sifra, datumUtakmice, domacin, gost)
-VALUES (3, '2019-06-15', 3, 1);
+INSERT INTO utakmica (sifra, rezultatDomacin, rezultatGost, datumUtakmice, domacin, gost)
+VALUES (3, 0, 3, '2019-06-15', 3, 1);
 
-INSERT INTO ozljeda (sifra, opisOzljede, igrac)
-VALUES (1, 'Uganuce gleznja', 11);
+INSERT INTO ozljeda (sifra, opisIncidenta, opisOzljede, igrac)
+VALUES (1, 'Uganuo glezanj tijekom utakmice', 'Uganuce gleznja', 11);
 
-INSERT INTO ozljeda (sifra, opisOzljede, igrac)
-VALUES (2, 'Napuknuce kosti', 23);
+INSERT INTO ozljeda (sifra, opisIncidenta, opisOzljede, igrac)
+VALUES (2, 'Ne zgodno pao na led', 'Napuknuce kosti', 23);
 
-INSERT INTO ozljeda (sifra, opisOzljede, igrac)
-VALUES (3, 'Iscasenje zgloba', 13);
+INSERT INTO ozljeda (sifra, opisIncidenta, opisOzljede, igrac)
+VALUES (3, 'Iscasio zglob na treningu', 'Iscasenje zgloba', 13);
 
-INSERT INTO ozljeda (sifra, opisOzljede, igrac)
-VALUES (4, 'Otekla noga', 35);
+INSERT INTO ozljeda (sifra, opisIncidenta, opisOzljede, igrac)
+VALUES (4, 'Protivnicki igrac stao na nogu nakon sudara', 'Otekla noga', 35);
+
+UPDATE tim SET kapetan = 11 WHERE sifra = 1;
+UPDATE tim SET kapetan = 23 WHERE sifra = 2;
+UPDATE tim SET kapetan = 35 WHERE sifra = 3;
+
+SELECT * FROM igrac;
+SELECT * FROM ozljeda;
+SELECT * FROM tim;
+SELECT * FROM utakmica;
 
 # Ispisati sva prezimena igraèa koji su ozljeðeni
 SELECT b.prezime AS Igrac, a.opisOzljede AS Ozljeda
