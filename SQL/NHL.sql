@@ -137,9 +137,9 @@ UPDATE tim SET kapetan = 23 WHERE sifra = 2;
 UPDATE tim SET kapetan = 35 WHERE sifra = 3;
 
 SELECT * FROM igrac;
-SELECT * FROM ozljeda;
 SELECT * FROM tim;
 SELECT * FROM utakmica;
+SELECT * FROM ozljeda;
 
 # Ispisati sva prezimena igraèa koji su ozljeðeni
 SELECT b.prezime AS Igrac, a.opisOzljede AS Ozljeda
@@ -150,3 +150,21 @@ FROM ozljeda a INNER JOIN igrac b ON a.igrac = b.sifra;
 SELECT a.prezime AS Igrac, concat('#',a.brojDresa) AS brojDresa, b.ime AS Tim
 FROM igrac a INNER JOIN tim b ON b.sifra = a.tim
 ORDER BY a.brojDresa ASC;
+
+# ISPIŠI IGRACA
+SELECT a.sifra, a.ime, a.prezime, a.pozicija, a.brojDresa, b.ime  
+FROM igrac a INNER JOIN tim b ON b.sifra = a.tim;
+
+# ISPIŠI TIM
+SELECT b.sifra, b.ime, b.grad, b.trener, concat(a.ime, ' ', a.prezime) AS kapetan 
+FROM tim b INNER JOIN igrac a ON b.sifra = a.tim
+WHERE a.sifra = 11 OR a.sifra = 23 OR a.sifra = 35;
+
+# ISPIŠI UTAKMICU
+SELECT c.sifra, c.rezultatDomacin, c.rezultatGost, c.datumUtakmice, d.ime AS domacin, b.ime AS gost
+FROM utakmica c INNER JOIN tim b ON b.sifra = c.domacin
+INNER JOIN tim d ON d.sifra = c.gost;
+
+# ISPIŠI OZLJEDU
+SELECT e.sifra, e.opisIncidenta, e.opisOzljede, concat(a.ime, ' ', a.prezime) AS igrac
+FROM ozljeda e INNER JOIN igrac a ON a.sifra = e.igrac;
