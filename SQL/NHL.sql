@@ -157,8 +157,7 @@ FROM igrac a INNER JOIN tim b ON b.sifra = a.tim;
 
 # ISPIŠI TIM
 SELECT b.sifra, b.ime, b.grad, b.trener, concat(a.ime, ' ', a.prezime) AS kapetan 
-FROM tim b INNER JOIN igrac a ON b.sifra = a.tim
-WHERE a.sifra = 11 OR a.sifra = 23 OR a.sifra = 35;
+FROM igrac a INNER JOIN tim b ON b.sifra = a.tim;
 
 # ISPIŠI UTAKMICU
 SELECT c.sifra, c.rezultatDomacin, c.rezultatGost, c.datumUtakmice, d.ime AS domacin, b.ime AS gost
