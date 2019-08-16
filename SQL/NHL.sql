@@ -167,3 +167,6 @@ INNER JOIN tim d ON d.sifra = c.gost;
 # ISPIŠI OZLJEDU
 SELECT e.sifra, e.opisIncidenta, e.opisOzljede, concat(a.ime, ' ', a.prezime) AS igrac
 FROM ozljeda e INNER JOIN igrac a ON a.sifra = e.igrac;
+
+# PROVJERA SIFRE
+SELECT count(*) AS broj FROM ozljeda WHERE sifra = 11;
